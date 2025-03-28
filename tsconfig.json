@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "rootDir": "src",
+		"baseUrl": "./src/",
+		"paths": {      
+      "@/entities": ["entities/index"],
+      "@/entities/*": ["entities/*"],
+      "@/shared": ["shared/index"],
+      "@/shared/*": ["shared/*"],
+      "@/style/*": ["style/*"],
+      "@/publish": ["publish/index"],
+      "@/publish/*": ["publish/*"],
+      "@/widgets": ["widgets/index"],
+      "@/widgets/*": ["widgets/*"],
+      "@/features": ["features/index"],
+      "@/features/*": ["features/*"],
+      "@/pages/*": ["pages/*"]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "extensions": [
+    ".js",
+    ".jsx",
+    ".ts",
+    ".tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
+}
