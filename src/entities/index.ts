@@ -22,6 +22,8 @@ import UploadFile from './uploadfile'
 import UploadFiles from './uploadfiles'
 import UploadPhotoAnalyze from './uploadphotoanalyze'
 import UploadPhotos from './uploadphotos'
+import Photolist from './photolist'
+import Videolist from './videolist'
 
 export {
 	Button,
@@ -53,6 +55,8 @@ export {
 	UploadFiles,
 	UploadPhotoAnalyze,
 	UploadPhotos,
+	Photolist,
+	Videolist,
 	useDialog,
 	useToast,
 }

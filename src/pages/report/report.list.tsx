@@ -1,6 +1,6 @@
-import { Button, Calendar, CalendarSection, Checkbox, Icon, Img, TabList, TabPanel, Tabs } from '@/entities'
+import { Button, Calendar, CalendarSection, Icon, Img, TabList, TabPanel, Tabs } from '@/entities'
 import { PopSelectClass } from '@/features'
-import { globalStore, scrollCheck } from '@/shared'
+import { globalStore } from '@/shared'
 import { MenuBar } from '@/widgets'
 import moment from 'moment'
 import { useEffect, useState } from 'react'
@@ -15,7 +15,7 @@ const _ = () => {
 			back: true,
 			menu: true,
 		})
-		scrollCheck()
+		// scrollCheck()
 	}, [])
 
 	//달력
@@ -83,24 +83,24 @@ const _ = () => {
 	]
 
 	// 단일선택
-	const [checkItems, setCheckItems] = useState<any>([])
-	const handleSingleCheck = (checked: any, id: any) => {
-		if (checked) {
-			setCheckItems((prev: any) => [...prev, id])
-		} else {
-			setCheckItems(checkItems.filter((el: any) => el !== id))
-		}
-	}
+	// const [checkItems, setCheckItems] = useState<any>([])
+	// const handleSingleCheck = (checked: any, id: any) => {
+	// 	if (checked) {
+	// 		setCheckItems((prev: any) => [...prev, id])
+	// 	} else {
+	// 		setCheckItems(checkItems.filter((el: any) => el !== id))
+	// 	}
+	// }
 	// 전체 선택
-	const handleAllCheck = (checked: any) => {
-		if (checked) {
-			let idArray: any = []
-			allCheckdata.forEach(d => idArray.push(d.value))
-			setCheckItems(idArray)
-		} else {
-			setCheckItems([])
-		}
-	}
+	// const handleAllCheck = (checked: any) => {
+	// 	if (checked) {
+	// 		let idArray: any = []
+	// 		allCheckdata.forEach(d => idArray.push(d.value))
+	// 		setCheckItems(idArray)
+	// 	} else {
+	// 		setCheckItems([])
+	// 	}
+	// }
 
 	useEffect(() => {
 		reportHandler(['2024-04-02', '2024-04-12', '2024-04-22', '2024-04-22'])
@@ -162,16 +162,16 @@ const _ = () => {
 							<TabPanel>
 								<div className='tab-content'>
 									<div className='child-info-list'>
-										<div className='menu'>
+										{/* <div className='menu'>
 											<Checkbox name='check-all' onChange={handleAllCheck} checked={checkItems.length === allCheckdata.length}>
 												전체
 											</Checkbox>
-										</div>
+										</div> */}
 										<ul>
 											{allCheckdata?.map((data, key) => (
 												<li key={key}>
-													<div className='box'>
-														<Checkbox key={key} name={`check-${data.value}`} onChange={(e: any) => handleSingleCheck(e, data.value)} checked={checkItems.includes(data.value)} />
+													<button className='box'>
+														{/* <Checkbox key={key} name={`check-${data.value}`} onChange={(e: any) => handleSingleCheck(e, data.value)} checked={checkItems.includes(data.value)} /> */}
 														<div className='thumb'>
 															<Img src={'/images/temp/temp-album.jpg'} alt='' />
 														</div>
@@ -183,7 +183,7 @@ const _ = () => {
 															<div className='teacher'>이순신 선생님</div>
 														</div>
 														{data.reserve ? <span className='reserve'>예약</span> : null}
-													</div>
+													</button>
 												</li>
 											))}
 										</ul>
@@ -194,7 +194,7 @@ const _ = () => {
 										<ul>
 											{allCheckdata?.map((data, key) => (
 												<li key={key}>
-													<div className='box'>
+													<button className='box'>
 														<div className='thumb'>
 															<Img src={'/images/temp/temp-album.jpg'} alt='' />
 														</div>
@@ -206,7 +206,7 @@ const _ = () => {
 															<div className='teacher'>이순신 선생님</div>
 														</div>
 														<div className='time'>10:00</div>
-													</div>
+													</button>
 												</li>
 											))}
 										</ul>
@@ -217,11 +217,11 @@ const _ = () => {
 					</div>
 				</div>
 			</Contents>
-			<div className='floating-menu hide'>
+			{/* <div className='floating-menu hide'>
 				<button className='btn-write' disabled={true}>
 					<span>작성</span>
 				</button>
-			</div>
+			</div> */}
 
 			<PopSelectClass value={selectedClass} data={classList} open={popClass} close={popCloseClass} onChange={setSelectedClass} />
 			<MenuBar menu='alarm' />

@@ -38,6 +38,7 @@ import NoticePreview from "./pages/notice/notice.preview";
 import NoticeDetail from "./pages/notice/notice.detail";
 
 import ReportList from "./pages/report/report.list";
+import ReportSelect from "./pages/report/report.select";
 import ReportWrite from "./pages/report/report.write";
 import ReportPreview from "./pages/report/report.preview";
 import ReportDetail from "./pages/report/report.detail";
@@ -162,6 +163,7 @@ export default function Router() {
         { path: '/publish/notice/detail', element: <NoticeDetail /> },
 
         { path: '/publish/report/list', element: <ReportList /> },
+        { path: '/publish/report/select', element: <ReportSelect /> },
         { path: '/publish/report/write', element: <ReportWrite /> },
         { path: '/publish/report/preview', element: <ReportPreview /> },
         { path: '/publish/report/detail', element: <ReportDetail /> },

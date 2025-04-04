@@ -76,7 +76,7 @@ const _ = ({ title, photos, photosOrg, max, total, onChange, setRemoveFiles }: a
 	}
 	return (
 		<UploadPhotos className='photo-upload-list'>
-			{title ? <b className='tit'>사진첨부</b> : null}
+			{title ? <b className='tit'>{ title }</b> : null}
 			<div className='img-wrap'>
 				<label className='upload' htmlFor='photos' onChange={handleAddImages}>
 					<input ref={ref} type='file' accept='.png, .jpeg, .jpg' multiple />

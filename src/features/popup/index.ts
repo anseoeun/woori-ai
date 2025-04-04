@@ -5,6 +5,7 @@ import { PopBoard } from './board'
 import { PopHold } from './hold'
 import { PopMenu } from './menu'
 import { PopPhotoView } from './photoview'
+import { PopVideoView } from './videoview'
 import { PopDatePicker, PopTimePicker } from './picker'
 import { PopRepleInput } from './repleinput'
 import { PopMultiSelectChild, PopSelectChild } from './selectchild'
@@ -23,6 +24,7 @@ export {
 	PopMenu,
 	PopMultiSelectChild,
 	PopPhotoView,
+	PopVideoView,
 	PopRepleInput,
 	PopSelectChild,
 	PopSelectClass,

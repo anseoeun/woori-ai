@@ -98,6 +98,7 @@ const PublishingMenuList: Array<MenuProps> = [
 
 	{ category: '07. 알림장', title: true, depth1: '', depth2: '', depth3: '', path: '', realpath: '', memo: '' },
 	{ category: '목록 ', depth1: '', depth2: '', depth3: '', path: '/publish/report/list', realpath: '/dailynews/list', memo: '' },
+	{ category: '사진선택 ', depth1: '', depth2: '', depth3: '', path: '/publish/report/select', realpath: '', memo: '' },
 	{ category: '작성', depth1: '', depth2: '', depth3: '', path: '/publish/report/write', realpath: '/dailynews/write', memo: '' },
 	{ category: '미리보기', depth1: '', depth2: '', depth3: '', path: '/publish/report/preview', realpath: '/dailynews/preview', memo: '' },
 	{ category: '상세', depth1: '', depth2: '', depth3: '', path: '/publish/report/detail', realpath: '/dailynews/detail', memo: '' },

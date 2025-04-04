@@ -168,7 +168,7 @@ const _ = () => {
 								<span>목요일</span>
 							</div>
 						</div>
-						<div className='dashboard-box'>
+						{/* <div className='dashboard-box'>
 							<ul>
 								<li>
 									<em>어린이집 재원일수</em>
@@ -179,7 +179,7 @@ const _ = () => {
 									<b>10</b>
 								</li>
 							</ul>
-						</div>
+						</div> */}
 						<div className='toggle-view-box on' ref={viewBox}>
 							<button className='box-header' onClick={viewBoxToggle}>
 								<b>AI알림장</b>
@@ -291,20 +291,6 @@ const _ = () => {
 						</div>
 
 						<div className='report-detail-view'>
-							<ul className='album-list'>
-								{photoList.map((src: any, id: any) => (
-									<li key={id}>
-										<button
-											className='img'
-											onClick={() => {
-												popOpenPhotoView(src)
-											}}
-										>
-											<Img src={'/images/temp/temp-album.jpg'} alt='' />
-										</button>
-									</li>
-								))}
-							</ul>
 							<div className='report-list'>
 								<ul>
 									<li>
@@ -334,6 +320,20 @@ const _ = () => {
 									</li>
 								</ul>
 							</div>
+							<ul className='album-list'>
+								{photoList.map((src: any, id: any) => (
+									<li key={id}>
+										<button
+											className='img'
+											onClick={() => {
+												popOpenPhotoView(src)
+											}}
+										>
+											<Img src={'/images/temp/temp-album.jpg'} alt='' />
+										</button>
+									</li>
+								))}
+							</ul>							
 							<div className='text pre-line'>
 								오늘은 우리 아이에게 활동량이 많은 날이었어요.
 								<br />

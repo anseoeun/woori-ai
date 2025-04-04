@@ -2,7 +2,7 @@
 const _ = ({ src }: any) => {
 	const prefix = src.includes('images') ? process.env.PUBLIC_URL : '';
 	const onError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-		(e.target as HTMLInputElement).src = '/images/no-image.svg'
+		(e.target as HTMLInputElement).src = `${process.env.PUBLIC_URL}'/images/no-image.svg'`
 	}
 
 	return (

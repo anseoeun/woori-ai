@@ -1,8 +1,7 @@
-import { Button, Icon, Img, Radio, RadioGroup } from '@/entities'
-import { PopPhotoView, PopTimePicker } from '@/features'
+import { Button, Icon, Img, Radio, RadioGroup, Photolist, Videolist } from '@/entities'
+import { PopPhotoView, PopTimePicker, PopVideoView } from '@/features'
 import { globalStore, zeroFill } from '@/shared'
 import { useEffect, useRef, useState } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import Contents from './report.style'
 
 const _ = () => {
@@ -15,6 +14,22 @@ const _ = () => {
 			trash: true,
 		})
 	}, [])
+
+
+	const [todayPhotos, setTodayPhotos] = useState([
+		{ id: 1, src:'https://img.freepik.com/premium-photo/multiethnic-group-school-children-laughing-embracing_928131-664.jpg' },
+		{ id: 2, src:'https://d14cvuwsb9oabg.cloudfront.net/c_fill,fl_lossy,w_960/v1470909225/jduwbwli1yozs9s4hfjs.jpg' },
+		{ id: 3, src:'https://www.ibabynews.com/news/photo/201811/69850_15448_5732.jpg' },
+		{ id: 4, src:'/images/temp/temp-album.jpg' },
+		{ id: 5, src:'https://www.ibabynews.com/news/photo/201808/67329_11722_3422.jpg' },
+		{ id: 6, src:'https://img.hankyung.com/photo/201708/BD.14560909.1.jpg' },
+	])
+
+	const [videos, setVidos] = useState([
+		{ id: 1, src:'https://cdn.pixabay.com/video/2025/02/23/260397_tiny.mp4' },
+		{ id: 2, src:'https://cdn.pixabay.com/video/2025/01/22/253998_tiny.mp4' },
+	])
+
 
 	const [child, setChild] = useState([
 		{ value: 1, cls: '딸기반', name: '박소율', selected: true },
@@ -88,6 +103,7 @@ const _ = () => {
 
 	const photoList = ['/images/temp/temp-album.jpg', '/images/temp/temp-album.jpg', '/images/temp/temp-album.jpg', '/images/temp/temp-album.jpg', '/images/temp/temp-album.jpg']
 
+	
 	// 사진보기
 	const [photo, setPhoto] = useState('')
 	const [popPhotoView, setPopPhotoView] = useState(false)
@@ -98,6 +114,18 @@ const _ = () => {
 	const popClosePhotoView = () => {
 		setPopPhotoView(false)
 	}
+
+		// 동영상보기
+		const [video, setVideo] = useState([])
+		const [popVideoView, setPopVideoView] = useState(false)
+		const popOpenVideoView = (src: any) => {
+			setPopVideoView(true)
+			console.log(src);
+			setVideo(src)
+		}
+		const popCloseVideoView = () => {
+			setPopVideoView(false)
+		}
 
 	//등록시간
 	const [notiTime, setNotiTime] = useState('1')
@@ -131,31 +159,12 @@ const _ = () => {
 						<div className='select-item-list-wrap'>
 							<div className='tit'>
 								<span className='label'>
-									선택 아동: <em>5명</em>
+									<em>이동욱</em>의 오늘									
 								</span>
 							</div>
-							<div className='select-item-list'>
-								<Swiper spaceBetween={0} slidesPerView={'auto'}>
-									{child.map((item: any, idx: any) => (
-										<SwiperSlide key={idx}>
-											{/* <button className='btn-del' onClick={()=>{changeDelete(item.value)}}></button> */}
-											<button
-												className={`box ` + (item.selected ? 'on' : '')}
-												onClick={() => {
-													changeSelectedChild(item.value)
-												}}
-											>
-												<div className='thumb'>
-													<Img src={'/images/temp/temp-album.jpg'} alt='' />
-												</div>
-												<div className='cls'>{item.cls}</div>
-												<div className='name'>
-													<b>{item.name}</b>
-												</div>
-											</button>
-										</SwiperSlide>
-									))}
-								</Swiper>
+							<div className='today-item-list'>
+								{todayPhotos.length > 0 ? <Photolist photos={todayPhotos} onView={popOpenPhotoView} /> : null}
+								{videos.length > 0 ? <Videolist videos={videos} onView={popOpenVideoView} /> : null}
 							</div>
 						</div>
 					</div>
@@ -174,7 +183,7 @@ const _ = () => {
 								<span>목요일</span>
 							</div>
 						</div>
-						<div className='dashboard-box'>
+						{/* <div className='dashboard-box'>
 							<ul>
 								<li>
 									<em>어린이집 재원일수</em>
@@ -185,7 +194,7 @@ const _ = () => {
 									<b>10</b>
 								</li>
 							</ul>
-						</div>
+						</div> */}
 						<div className='toggle-view-box on' ref={viewBox}>
 							<button className='box-header' onClick={viewBoxToggle}>
 								<b>AI알림장</b>
@@ -297,20 +306,6 @@ const _ = () => {
 						</div>
 
 						<div className='report-detail-view'>
-							<ul className='album-list'>
-								{photoList.map((src: any, id: any) => (
-									<li key={id}>
-										<button
-											className='img'
-											onClick={() => {
-												popOpenPhotoView(src)
-											}}
-										>
-											<Img src={'/images/temp/temp-album.jpg'} alt='' />
-										</button>
-									</li>
-								))}
-							</ul>
 							<div className='report-list'>
 								<ul>
 									<li>
@@ -339,7 +334,22 @@ const _ = () => {
 										</div>
 									</li>
 								</ul>
-							</div>
+							</div>							
+							<ul className='album-list'>
+								{photoList.map((src: any, id: any) => (
+									<li key={id}>
+										<button
+											className='img'
+											onClick={() => {
+												popOpenPhotoView(src)
+											}}
+										>
+											<Img src={'/images/temp/temp-album.jpg'} alt='' />
+										</button>
+									</li>
+								))}
+							</ul>
+
 							<div className='text pre-line'>
 								오늘은 우리 아이에게 활동량이 많은 날이었어요.
 								<br />
@@ -390,7 +400,9 @@ const _ = () => {
 					</div>
 				</div>
 			</Contents>
+
 			<PopPhotoView src={photo} open={popPhotoView} close={popClosePhotoView} />
+			<PopVideoView src={video} open={popVideoView} close={popCloseVideoView} />
 
 			<PopTimePicker open={popPicker} close={popClosePicker} data={dateData} value={dateValue} onChange={setDateValue} />
 		</>
